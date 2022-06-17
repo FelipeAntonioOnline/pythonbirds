@@ -17,6 +17,14 @@ class Pessoa:
             print(f"[{filho}] ", end="")
         print("")
 
+    @staticmethod
+    def hitchhiker_method():
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):
+        return f"{cls} - olhos {cls.olhos}"
+
 
 if __name__ == "__main__":
     felipe = Pessoa("Felipe", 35, *["Nina", "Mel"])
@@ -24,3 +32,5 @@ if __name__ == "__main__":
     felipe.biografia()
     print(f"ID de Felipe: {id(felipe.olhos)}")
     print(f"ID de Pessoa: {id(Pessoa.olhos)}")
+    print(felipe.hitchhiker_method())
+    print(felipe.nome_e_atributos_de_classe())
