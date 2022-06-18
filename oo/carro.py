@@ -116,9 +116,9 @@
 
 
 class Carro:
-    def __init__(self, motor, direcao):
-        self.motor = motor
-        self.direcao = direcao
+    def __init__(self):
+        self.motor = Motor()
+        self.direcao = Direcao()
 
 
 class Motor:
