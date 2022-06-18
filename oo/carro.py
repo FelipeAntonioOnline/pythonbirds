@@ -120,6 +120,24 @@ class Carro:
         self.motor = Motor()
         self.direcao = Direcao()
 
+    def calcular_velocidade(self):
+        return self.motor.velocidade
+
+    def acelerar(self):
+        self.motor.acelerar()
+
+    def frear(self):
+        self.motor.frear()
+
+    def valor(self):
+        self.direcao.compasso()
+
+    def girar_a_direita(self):
+        self.direcao.girar_a_direita()
+
+    def girar_a_esquerda(self):
+        self.direcao.girar_a_esquerda()
+
 
 class Motor:
     """Controla e apresenta a velocidade do Carro.
