@@ -117,7 +117,9 @@
 
 class Carro:
     class Motor:
-        """Controla e apresenta a velocidade do Carro."""
+        """Controla e apresenta a velocidade do Carro.
+        Acrescente parâmetro de velocidade opcional. Padrão: velocidade = 0
+        """
 
         def __init__(self, velocidade=0):
             self.velocidade = velocidade
@@ -137,3 +139,38 @@ class Carro:
                 self.velocidade = 0
             else:
                 self.velocidade -= 2
+
+    class Direcao:
+        """Controla e apresenta a direção do Carro.
+        Acrescente parâmetro de direção opcional. Padrão: cardinal = 0
+
+        0 -> Norte,  1 -> Leste,  2 -> Sul,  3 -> Oeste.
+        """
+
+        def __init__(self, indice_cardinal=0):
+            self.cardinais = ("Norte", "Leste", "Sul", "Oeste")
+            self.indice_cardinal = indice_cardinal
+            self.cardinal = self.cardinais[indice_cardinal]
+
+        def compasso(self):
+            """Retorna cardinal."""
+            return self.cardinal
+
+        def girar(self, volta):
+            self.indice_cardinal += volta
+            self.cardinal = self.cardinais[self.indice_cardinal]
+            return self.cardinal
+
+        def girar_a_direita(self):
+            if self.indice_cardinal == len(self.cardinais) - 1:
+                self.indice_cardinal = 0
+                self.cardinal = self.cardinais[self.indice_cardinal]
+            else:
+                self.girar(1)
+
+        def girar_a_esquerda(self):
+            if self.indice_cardinal == 0:
+                self.indice_cardinal = len(self.cardinais) - 1
+                self.cardinal = self.cardinais[self.indice_cardinal]
+            else:
+                self.girar(-1)
