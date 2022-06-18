@@ -116,61 +116,67 @@
 
 
 class Carro:
-    class Motor:
-        """Controla e apresenta a velocidade do Carro.
-        Acrescente parâmetro de velocidade opcional. Padrão: velocidade = 0
-        """
+    def __init__(self, motor, direcao):
+        self.motor = motor
+        self.direcao = direcao
 
-        def __init__(self, velocidade=0):
-            self.velocidade = velocidade
 
-        def velocimetro(self):
-            """Retorna o valo da velocidade atual."""
-            return self.velocidade
+class Motor:
+    """Controla e apresenta a velocidade do Carro.
+    Acrescente parâmetro de velocidade opcional. Padrão: velocidade = 0
+    """
 
-        def acelerar(self):
-            """Incrementa velocidade em uma unidade."""
-            self.velocidade += 1
+    def __init__(self, velocidade=0):
+        self.velocidade = velocidade
 
-        def frear(self):
-            """Decrementa o valor da velocidade em duas unidades até o valor
-            limite de zero."""
-            if self.velocidade < 2:
-                self.velocidade = 0
-            else:
-                self.velocidade -= 2
+    def velocimetro(self):
+        """Retorna o valo da velocidade atual."""
+        return self.velocidade
 
-    class Direcao:
-        """Controla e apresenta a direção do Carro.
-        Acrescente parâmetro de direção opcional. Padrão: cardinal = 0
+    def acelerar(self):
+        """Incrementa velocidade em uma unidade."""
+        self.velocidade += 1
 
-        0 -> Norte,  1 -> Leste,  2 -> Sul,  3 -> Oeste.
-        """
+    def frear(self):
+        """Decrementa o valor da velocidade em duas unidades até o valor
+        limite de zero."""
+        if self.velocidade < 2:
+            self.velocidade = 0
+        else:
+            self.velocidade -= 2
 
-        def __init__(self, indice_cardinal=0):
-            self.cardinais = ("Norte", "Leste", "Sul", "Oeste")
-            self.indice_cardinal = indice_cardinal
-            self.cardinal = self.cardinais[indice_cardinal]
 
-        def compasso(self):
-            """Retorna cardinal."""
-            return self.cardinal
+class Direcao:
+    """Controla e apresenta a direção do Carro.
+    Acrescente parâmetro de direção opcional. Padrão: cardinal = 0
 
-        def girar(self, volta):
-            self.indice_cardinal += volta
+    0 -> Norte,  1 -> Leste,  2 -> Sul,  3 -> Oeste.
+    """
+
+    def __init__(self, indice_cardinal=0):
+        self.cardinais = ("Norte", "Leste", "Sul", "Oeste")
+        self.indice_cardinal = indice_cardinal
+        self.cardinal = self.cardinais[indice_cardinal]
+
+    def compasso(self):
+        """Retorna cardinal."""
+        return self.cardinal
+
+    def girar(self, volta):
+        self.indice_cardinal += volta
+        self.cardinal = self.cardinais[self.indice_cardinal]
+        return self.cardinal
+
+    def girar_a_direita(self):
+        if self.indice_cardinal == len(self.cardinais) - 1:
+            self.indice_cardinal = 0
             self.cardinal = self.cardinais[self.indice_cardinal]
-            return self.cardinal
+        else:
+            self.girar(1)
 
-        def girar_a_direita(self):
-            if self.indice_cardinal == len(self.cardinais) - 1:
-                self.indice_cardinal = 0
-                self.cardinal = self.cardinais[self.indice_cardinal]
-            else:
-                self.girar(1)
-
-        def girar_a_esquerda(self):
-            if self.indice_cardinal == 0:
-                self.indice_cardinal = len(self.cardinais) - 1
-                self.cardinal = self.cardinais[self.indice_cardinal]
-            else:
-                self.girar(-1)
+    def girar_a_esquerda(self):
+        if self.indice_cardinal == 0:
+            self.indice_cardinal = len(self.cardinais) - 1
+            self.cardinal = self.cardinais[self.indice_cardinal]
+        else:
+            self.girar(-1)
