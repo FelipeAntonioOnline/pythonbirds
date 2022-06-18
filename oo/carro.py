@@ -113,3 +113,27 @@
 # >>> carro.gira_a_esquerda()
 # >>> carro.valor()
 # 'Norte'
+
+
+class Carro:
+    class Motor:
+        """Controla e apresenta a velocidade do Carro."""
+
+        def __init__(self, velocidade=0):
+            self.velocidade = velocidade
+
+        def velocimetro(self):
+            """Retorna o valo da velocidade atual."""
+            return self.velocidade
+
+        def acelerar(self):
+            """Incrementa velocidade em uma unidade."""
+            self.velocidade += 1
+
+        def frear(self):
+            """Decrementa o valor da velocidade em duas unidades até o valor
+            limite de zero."""
+            if self.velocidade < 2:
+                self.velocidade = 0
+            else:
+                self.velocidade -= 2
