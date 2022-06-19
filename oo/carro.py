@@ -1,7 +1,7 @@
 class Carro:
-    def __init__(self):
-        self.motor = Motor()
-        self.direcao = Direcao()
+    def __init__(self, velocidade=0, indice_cardinal=0):
+        self.motor = Motor(velocidade)
+        self.direcao = Direcao(indice_cardinal)
 
     def velocidade(self):
         return self.motor.velocidade
@@ -23,7 +23,13 @@ class Carro:
         self.motor.acelerar()
 
     def frear(self):
-        """>>> carro.frear()
+        """>>> carro = Carro(velocidade=5)
+        >>> carro.velocidade()
+        5
+        >>> carro.frear()
+        >>> carro.velocidade()
+        3
+        >>> carro.frear()
         >>> carro.velocidade()
         1
         >>> carro.frear()
@@ -34,21 +40,22 @@ class Carro:
         self.motor.frear()
 
     def compasso(self):
-        self.direcao.compasso()
+        return self.direcao.cardinal
 
     def girar_a_direita(self):
-        """>>> carro.compasso()
+        """>>> carro = Carro()
+        >>> carro.compasso()
         'Norte'
-        >>> carro.gira_a_direita()
+        >>> carro.girar_a_direita()
         >>> carro.compasso()
         'Leste'
-        >>> carro.gira_a_direita()
+        >>> carro.girar_a_direita()
         >>> carro.compasso()
         'Sul'
-        >>> carro.gira_a_direita()
+        >>> carro.girar_a_direita()
         >>> carro.compasso()
         'Oeste'
-        >>> carro.gira_a_direita()
+        >>> carro.girar_a_direita()
         >>> carro.compasso()
         'Norte'
         """
@@ -56,16 +63,17 @@ class Carro:
         self.direcao.girar_a_direita()
 
     def girar_a_esquerda(self):
-        """>>> carro.gira_a_esquerda()
+        """>>> carro = Carro()
+        >>> carro.girar_a_esquerda()
         >>> carro.compasso()
         'Oeste'
-        >>> carro.gira_a_esquerda()
+        >>> carro.girar_a_esquerda()
         >>> carro.compasso()
         'Sul'
-        >>> carro.gira_a_esquerda()
+        >>> carro.girar_a_esquerda()
         >>> carro.compasso()
         'Leste'
-        >>> carro.gira_a_esquerda()
+        >>> carro.girar_a_esquerda()
         >>> carro.compasso()
         'Norte'
         """
@@ -88,16 +96,16 @@ class Motor:
     def acelerar(self):
         """Incrementa velocidade em uma unidade.
         >>> motor = Motor()
-        >>> motor.velocidade()
+        >>> motor.velocimetro()
         0
         >>> motor.acelerar()
-        >>> motor.velocidade()
+        >>> motor.velocimetro()
         1
         >>> motor.acelerar()
-        >>> motor.velocidade()
+        >>> motor.velocimetro()
         2
         >>> motor.acelerar()
-        >>> motor.velocidade()
+        >>> motor.velocimetro()
         3
         """
         self.velocidade += 1
@@ -105,11 +113,17 @@ class Motor:
     def frear(self):
         """Decrementa o compasso da velocidade em duas unidades até o compasso
         limite de zero.
+        >>> motor = Motor(velocidade=5)
+        >>> motor.velocimetro()
+        5
         >>> motor.frear()
-        >>> motor.velocidade()
+        >>> motor.velocimetro()
+        3
+        >>> motor.frear()
+        >>> motor.velocimetro()
         1
         >>> motor.frear()
-        >>> motor.velocidade()
+        >>> motor.velocimetro()
         0
         """
 
@@ -146,16 +160,16 @@ class Direcao:
         """>>> direcao = Direcao()
         >>> direcao.compasso()
         'Norte'
-        >>> direcao.gira_a_direita()
+        >>> direcao.girar_a_direita()
         >>> direcao.compasso()
         'Leste'
-        >>> direcao.gira_a_direita()
+        >>> direcao.girar_a_direita()
         >>> direcao.compasso()
         'Sul'
-        >>> direcao.gira_a_direita()
+        >>> direcao.girar_a_direita()
         >>> direcao.compasso()
         'Oeste'
-        >>> direcao.gira_a_direita()
+        >>> direcao.girar_a_direita()
         >>> direcao.compasso()
         'Norte'
         """
@@ -167,19 +181,20 @@ class Direcao:
             self.girar(1)
 
     def girar_a_esquerda(self):
-        """>>> direcao.gira_a_esquerda()
+        """>>> direcao = Direcao()
+        >>> direcao.girar_a_esquerda()
         >>> direcao.compasso()
         'Oeste'
-        >>> direcao.gira_a_esquerda()
+        >>> direcao.girar_a_esquerda()
         >>> direcao.compasso()
         'Sul'
-        >>> direcao.gira_a_esquerda()
+        >>> direcao.girar_a_esquerda()
         >>> direcao.compasso()
         'Leste'
-        >>> direcao.gira_a_esquerda()
+        >>> direcao.girar_a_esquerda()
         >>> direcao.compasso()
         'Norte'
-        >>> direcao.gira_a_esquerda()
+        >>> direcao.girar_a_esquerda()
         >>> direcao.compasso()
         'Oeste'
         """
