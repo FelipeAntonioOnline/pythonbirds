@@ -7,7 +7,7 @@ class Pessoa:
         self.filhos = list(filhos)
 
     def cumprimentar(self):
-        return f"Olá, {self.nome}"
+        return f"Olá,meu nome é {self.nome}."
 
     def biografia(self):
         print(f"Nome: [{self.nome}]")
@@ -27,7 +27,8 @@ class Pessoa:
 
 
 class Homem(Pessoa):
-    pass
+    def cumprimentar(self):
+        return f"{super().cumprimentar()} Bater os punhos."
 
 
 class Mutante(Pessoa):
@@ -45,6 +46,7 @@ if __name__ == "__main__":
 
     pessoa = Pessoa("Anônimo")
     homem = Homem("Genérico")
+    print(homem.cumprimentar())
     print(isinstance(pessoa, Pessoa))
     print(isinstance(pessoa, Homem))
     print(isinstance(homem, Pessoa))
