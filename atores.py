@@ -49,9 +49,10 @@ class Ator:
         """
         Método que executa lógica de colisão entre dois atores.
         Só deve haver colisão se os dois atores tiverem seus status ativos.
-        Para colisão, é considerado um quadrado, com lado igual ao parâmetro intervalo, em volta do ponto onde se
-        encontra o ator. Se os atores estiverem dentro desse mesmo quadrado, seus status devem ser alterados para
-        destruido, seus caracteres para destruido também.
+        Para colisão, é considerado um quadrado, com lado igual ao parâmetro
+        intervalo, em volta do ponto onde se encontra o ator. Se os atores
+        estiverem dentro desse mesmo quadrado, seus status devem ser alterados
+        para destruido, seus caracteres para destruido também.
 
         :param outro_ator: Ator a ser considerado na colisão
         :param intervalo: Intervalo a ser considerado
